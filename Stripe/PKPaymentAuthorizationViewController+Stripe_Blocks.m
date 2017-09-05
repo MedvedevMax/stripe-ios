@@ -8,6 +8,8 @@
 
 #import <objc/runtime.h>
 
+#import "NSError+Stripe.h"
+
 #import "PKPaymentAuthorizationViewController+Stripe_Blocks.h"
 #import "STPAPIClient+ApplePay.h"
 #import "StripeError.h"
