@@ -121,7 +121,10 @@ typedef NS_ENUM(NSUInteger, STPPaymentContextState) {
     self.loadingPromise = [[[STPPromise<STPPaymentMethodTuple *> new] onSuccess:^(STPPaymentMethodTuple *tuple) {
         STRONG(self);
         self.paymentMethods = tuple.paymentMethods;
-        self.selectedPaymentMethod = tuple.selectedPaymentMethod;
+        
+        if (!self.ignoreDefaultPaymentMethod) {
+            self.selectedPaymentMethod = tuple.selectedPaymentMethod;
+        }
     }] onFailure:^(NSError * _Nonnull error) {
         STRONG(self);
         if (self.hostViewController) {
@@ -156,7 +159,7 @@ typedef NS_ENUM(NSUInteger, STPPaymentContextState) {
                 if ([source isKindOfClass:[STPCard class]]) {
                     STPCard *card = (STPCard *)source;
                     [cards addObject:card];
-                    if (!self.ignoreDefaultPaymentMethod && [card.stripeID isEqualToString:customer.defaultSource.stripeID]) {
+                    if ([card.stripeID isEqualToString:customer.defaultSource.stripeID]) {
                         selectedCard = card;
                     }
                 }
