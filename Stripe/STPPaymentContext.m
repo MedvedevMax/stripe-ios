@@ -57,11 +57,7 @@ typedef NS_ENUM(NSUInteger, STPPaymentContextState) {
 @property (nonatomic) STPVoidPromise *didAppearPromise;
 
 @property (nonatomic, weak) STPPaymentMethodsViewController *paymentMethodsViewController;
-@property (nonatomic) id<STPPaymentMethod> selectedPaymentMethod;
-@property (nonatomic) NSArray<id<STPPaymentMethod>> *paymentMethods;
 @property (nonatomic) STPAddress *shippingAddress;
-@property (nonatomic) PKShippingMethod *selectedShippingMethod;
-@property (nonatomic) NSArray<PKShippingMethod *> *shippingMethods;
 
 @property (nonatomic, assign) STPPaymentContextState state;
 
