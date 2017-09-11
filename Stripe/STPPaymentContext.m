@@ -156,7 +156,7 @@ typedef NS_ENUM(NSUInteger, STPPaymentContextState) {
                 if ([source isKindOfClass:[STPCard class]]) {
                     STPCard *card = (STPCard *)source;
                     [cards addObject:card];
-                    if ([card.stripeID isEqualToString:customer.defaultSource.stripeID]) {
+                    if (!self.ignoreDefaultPaymentMethod && [card.stripeID isEqualToString:customer.defaultSource.stripeID]) {
                         selectedCard = card;
                     }
                 }

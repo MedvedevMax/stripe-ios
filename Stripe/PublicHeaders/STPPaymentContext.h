@@ -127,6 +127,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL loading;
 
 /**
+ Whether to ignore default payment method when presenting selection
+ */
+@property (nonatomic) BOOL ignoreDefaultPaymentMethod;
+
+/**
  The user's currently selected payment method. May be nil.
  */
 @property (nonatomic, nullable) id<STPPaymentMethod> selectedPaymentMethod;
